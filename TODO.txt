@@ -1,0 +1,8 @@
+TODO 
+have capybara as cashier (pirat?)
+
+capybara asks how they will pay with dubloons or USD 
+
+have cash and coins animate up and stack on eachother (with correct change)
+
+sound effects for cash and coins? 
