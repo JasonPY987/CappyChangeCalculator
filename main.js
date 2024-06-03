@@ -11,7 +11,7 @@ document.getElementById('calculate-change').addEventListener('click', function()
     }
     const change = calculateChange(amountDue, amountReceived);
     displayChange(change);
-    displayTotalChange(amountDue, amountReceived);
+    document.getElementById('totalChangeOutput').textContent = 'Total Change: $0.00';
 });
 
 function calculateChange(due, received) {
@@ -46,12 +46,12 @@ function displayChange(denominations) {
         categoryDiv.appendChild(categoryHeader);
         container.appendChild(categoryDiv);
 
+        const denominationDiv = document.createElement('div');
+        denominationDiv.className = 'denomination';
+        categoryDiv.appendChild(denominationDiv);
+
         categories[category].forEach(key => {
             if (denominations[key] > 0) {
-                const denominationDiv = document.createElement('div');
-                denominationDiv.className = 'denomination';
-                categoryDiv.appendChild(denominationDiv);
-
                 const imagesContainer = document.createElement('div');
                 imagesContainer.className = 'images-container';
                 denominationDiv.appendChild(imagesContainer);
@@ -59,9 +59,9 @@ function displayChange(denominations) {
                 for (let i = 0; i < denominations[key]; i++) {
                     const img = document.createElement('img');
                     img.src = getImageSrc(key);
-                    img.className = 'money-img';
+                    img.className = `money-img ${category.toLowerCase().slice(0, -1)}`;
+                    img.style.animationDelay = `${i * 0.1}s`;
                     imagesContainer.appendChild(img);
-                    animateImageEntry(img);
                 }
 
                 const countLabel = document.createElement('span');
@@ -71,16 +71,6 @@ function displayChange(denominations) {
             }
         });
     });
-}
-
-function animateImageEntry(image) {
-    image.style.opacity = '0';
-    image.style.transition = 'opacity 0.5s, transform 0.5s';
-    image.style.transform = 'translateY(-20px)';
-    setTimeout(() => {
-        image.style.opacity = '1';
-        image.style.transform = 'translateY(0)';
-    }, 10); // Delay to allow CSS to recognize the transition
 }
 
 function getImageSrc(key) {
@@ -104,11 +94,25 @@ document.getElementById('show-total-change').addEventListener('click', function(
         alert('Received amount is less than the due amount. No change can be calculated.');
         return;
     }
-    displayTotalChange(amountDue, amountReceived);
+    const change = (amountReceived - amountDue).toFixed(2);
+    animateTotalChange(0, change);
 });
 
-function displayTotalChange(due, received) {
-    const change = received - due;
+function animateTotalChange(start, end) {
     const totalChangeOutput = document.getElementById('totalChangeOutput');
-    totalChangeOutput.textContent = `Total Change: $${change.toFixed(2)}`;
+    const startValue = parseFloat(start);
+    const endValue = parseFloat(end);
+    const duration = 2000;
+    const frameRate = 60;
+    const step = (endValue - startValue) / (duration / frameRate);
+
+    let currentValue = startValue;
+    const intervalId = setInterval(() => {
+        currentValue += step;
+        if (currentValue >= endValue) {
+            currentValue = endValue;
+            clearInterval(intervalId);
+        }
+        totalChangeOutput.textContent = `Total Change: $${currentValue.toFixed(2)}`;
+    }, 1000 / frameRate);
 }

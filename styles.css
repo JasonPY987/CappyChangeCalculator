@@ -69,8 +69,6 @@ button:hover {
 
 #changeOutput {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
     justify-content: center;
     padding: 20px;
     margin-top: 20px;
@@ -80,60 +78,41 @@ button:hover {
 }
 
 .category {
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 20px; /* Add space between dollar and cent columns */
 }
 
 .category h3 {
     margin-bottom: 10px;
     color: #007bff;
+    text-align: center; /* Center the category title */
 }
 
 .denomination {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 20px; /* Add space between different denominations */
 }
 
 .money-img {
     width: 40px;
     height: 40px;
-    margin-bottom: -20px; /* Adjust to create overlapping effect */
     position: relative;
     transition: transform 0.3s ease;
 }
 
-.money-img:nth-child(odd) {
-    transform: translateX(-5px);
+.money-img.dollar {
+    animation: slideInLeft 0.5s ease forwards;
 }
 
-.money-img:nth-child(even) {
-    transform: translateX(5px);
+.money-img.cent {
+    animation: slideInRight 0.5s ease forwards;
 }
 
-.images-container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 5px;
-}
-
-.count-label {
-    font-size: 14px;
-    text-align: center;
-    display: block;
-    font-weight: bold;
-    color: #555;
-}
-
-/* Responsive adjustments */
-@media (max-width: 600px) {
-    input[type="number"], button {
-        width: 100%;
-    }
-}
-
-@keyframes slideIn {
+@keyframes slideInLeft {
     from {
         transform: translateX(-100%);
     }
@@ -142,15 +121,49 @@ button:hover {
     }
 }
 
-.change-item {
-    animation: slideIn 0.5s ease-out;
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
 }
 
-img {
-    margin-right: 10px;
+.images-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px; /* Add space between images and count label */
+}
+
+.count-label {
+    font-size: 14px;
+    text-align: center;
+    display: block;
+    font-weight: bold;
+    color: #555;
+    z-index: 1; /* Ensure the label is above the images */
+    background-color: white; /* Add background color to avoid overlap */
+    padding: 2px 5px;
+    border-radius: 5px;
+    margin-top: 5px; /* Add space between the label and images */
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    input[type="number"], button {
+        width: 100%;
+    }
+
+    #changeOutput {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .category {
+        margin: 20px 0;
+    }
 }
 
 /* Sticky footer */
