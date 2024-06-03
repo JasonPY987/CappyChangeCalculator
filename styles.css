@@ -102,6 +102,7 @@ button:hover {
     height: 40px;
     position: relative;
     transition: transform 0.3s ease;
+    margin-top: -15px; /* Overlap images slightly */
 }
 
 .money-img.dollar {
@@ -134,7 +135,7 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 10px; /* Add space between images and count label */
+    margin-bottom: 0; /* Remove space between images and count label */
 }
 
 .count-label {
@@ -144,10 +145,10 @@ button:hover {
     font-weight: bold;
     color: #555;
     z-index: 1; /* Ensure the label is above the images */
-    background-color: white; /* Add background color to avoid overlap */
+    background-color: transparent; /* Remove background color */
     padding: 2px 5px;
     border-radius: 5px;
-    margin-top: 5px; /* Add space between the label and images */
+    margin-top: 10px; /* Move the label up */
 }
 
 /* Responsive adjustments */

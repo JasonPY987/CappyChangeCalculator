@@ -30,6 +30,13 @@ function calculateChange(due, received) {
 }
 
 function displayChange(denominations) {
+    const totalDollars = denominations['20'] * 20 + denominations['10'] * 10 + denominations['5'] * 5 + denominations['2'] * 2 + denominations['1'];
+    document.getElementById('dollars-output').textContent = totalDollars;
+    document.getElementById('quarters-output').textContent = denominations['0.25'];
+    document.getElementById('dimes-output').textContent = denominations['0.10'];
+    document.getElementById('nickels-output').textContent = denominations['0.05'];
+    document.getElementById('pennies-output').textContent = denominations['0.01'];
+
     const container = document.getElementById('changeOutput');
     container.innerHTML = ''; // Clear previous results
 
@@ -46,12 +53,12 @@ function displayChange(denominations) {
         categoryDiv.appendChild(categoryHeader);
         container.appendChild(categoryDiv);
 
-        const denominationDiv = document.createElement('div');
-        denominationDiv.className = 'denomination';
-        categoryDiv.appendChild(denominationDiv);
-
         categories[category].forEach(key => {
             if (denominations[key] > 0) {
+                const denominationDiv = document.createElement('div');
+                denominationDiv.className = 'denomination';
+                categoryDiv.appendChild(denominationDiv);
+
                 const imagesContainer = document.createElement('div');
                 imagesContainer.className = 'images-container';
                 denominationDiv.appendChild(imagesContainer);
@@ -63,11 +70,6 @@ function displayChange(denominations) {
                     img.style.animationDelay = `${i * 0.1}s`;
                     imagesContainer.appendChild(img);
                 }
-
-                const countLabel = document.createElement('span');
-                countLabel.className = 'count-label';
-                countLabel.textContent = `x${denominations[key]}`;
-                denominationDiv.appendChild(countLabel);
             }
         });
     });
