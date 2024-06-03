@@ -1,10 +1,13 @@
 /* General body styling */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Roboto', sans-serif;
     background-color: #f4f4f9;
     margin: 0;
     padding: 20px;
     color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 header {
@@ -12,46 +15,77 @@ header {
     color: #fff;
     padding: 10px 20px;
     text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+main {
+    flex: 1;
 }
 
 .input-group {
     margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
 }
 
 input[type="number"] {
-    width: calc(100% - 22px);
+    width: 100%;
     padding: 10px;
     margin-top: 5px;
     border: 2px solid #ddd;
     border-radius: 5px;
     display: block;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 input[type="number"]:focus {
-    border-color: #0056b3;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
 button {
-    background-color: #28a745;
+    background-color: #007bff;
     color: white;
     border: none;
     padding: 10px 20px;
     text-transform: uppercase;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
 }
 
 button:hover {
-    background-color: #218838;
+    background-color: #0056b3;
+    transform: translateY(-2px);
 }
 
 #changeOutput {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 20px;
     justify-content: center;
     padding: 20px;
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.category {
+    margin-bottom: 20px;
+}
+
+.category h3 {
+    margin-bottom: 10px;
+    color: #007bff;
 }
 
 .denomination {
@@ -61,19 +95,19 @@ button:hover {
 }
 
 .money-img {
-    width: 50px;
-    height: 50px;
-    margin-bottom: -30px; /* Adjust to create overlapping effect */
+    width: 40px;
+    height: 40px;
+    margin-bottom: -20px; /* Adjust to create overlapping effect */
     position: relative;
     transition: transform 0.3s ease;
 }
 
 .money-img:nth-child(odd) {
-    transform: translateX(-10px);
+    transform: translateX(-5px);
 }
 
 .money-img:nth-child(even) {
-    transform: translateX(10px);
+    transform: translateX(5px);
 }
 
 .images-container {
@@ -85,9 +119,11 @@ button:hover {
 }
 
 .count-label {
-    font-size: 16px;
+    font-size: 14px;
     text-align: center;
     display: block;
+    font-weight: bold;
+    color: #555;
 }
 
 /* Responsive adjustments */
@@ -117,6 +153,19 @@ img {
     margin-right: 10px;
 }
 
-.category {
-    margin-bottom: 20px;
+/* Sticky footer */
+footer {
+    position: sticky;
+    bottom: 0;
+    background: #007bff;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 8px 8px 0 0;
+}
+
+#totalChangeOutput {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0;
 }

@@ -1,24 +1,24 @@
 document.getElementById('calculate-change').addEventListener('click', function() {
     const amountDue = parseFloat(document.getElementById('amount-due').value);
     const amountReceived = parseFloat(document.getElementById('amount-received').value);
-    if (isNaN(amountDue) || isNaN(amountReceived)) {
-        alert("Please enter valid numbers for both amounts.");
+    if (isNaN(amountDue) || isNaN(amountReceived) || amountDue <= 0 || amountReceived <= 0) {
+        alert("Please enter valid positive numbers for both amounts.");
+        return;
+    }
+    if (amountReceived < amountDue) {
+        alert('Received amount is less than the due amount. No change can be calculated.');
         return;
     }
     const change = calculateChange(amountDue, amountReceived);
     displayChange(change);
+    displayTotalChange(amountDue, amountReceived);
 });
 
 function calculateChange(due, received) {
-    if (received < due) {
-        alert('Received amount is less than the due amount. No change can be calculated.');
-        return {};
-    }
-
     let change = received - due;
     let denominations = { '20': 0, '10': 0, '5': 0, '2': 0, '1': 0, '0.25': 0, '0.10': 0, '0.05': 0, '0.01': 0 };
 
-    change = parseFloat((change).toFixed(2));
+    change = parseFloat(change.toFixed(2));
 
     Object.keys(denominations).sort((a, b) => b - a).forEach(key => {
         const value = parseFloat(key);
@@ -30,18 +30,6 @@ function calculateChange(due, received) {
 }
 
 function displayChange(denominations) {
-    const dollarsOutput = document.getElementById('dollars-output');
-    const quartersOutput = document.getElementById('quarters-output');
-    const dimesOutput = document.getElementById('dimes-output');
-    const nickelsOutput = document.getElementById('nickels-output');
-    const penniesOutput = document.getElementById('pennies-output');
-
-    dollarsOutput.textContent = `Dollars: ${denominations['20'] * 20 + denominations['10'] * 10 + denominations['5'] * 5 + denominations['2'] * 2 + denominations['1']}`;
-    quartersOutput.textContent = `Quarters: ${denominations['0.25']}`;
-    dimesOutput.textContent = `Dimes: ${denominations['0.10']}`;
-    nickelsOutput.textContent = `Nickels: ${denominations['0.05']}`;
-    penniesOutput.textContent = `Pennies: ${denominations['0.01']}`;
-
     const container = document.getElementById('changeOutput');
     container.innerHTML = ''; // Clear previous results
 
@@ -71,16 +59,15 @@ function displayChange(denominations) {
                 for (let i = 0; i < denominations[key]; i++) {
                     const img = document.createElement('img');
                     img.src = getImageSrc(key);
-                    img.alt = `${key} Currency`;
                     img.className = 'money-img';
-                    animateImageEntry(img);
                     imagesContainer.appendChild(img);
+                    animateImageEntry(img);
                 }
-                
-                const countLabel = document.createElement('div');
+
+                const countLabel = document.createElement('span');
                 countLabel.className = 'count-label';
                 countLabel.textContent = `x${denominations[key]}`;
-                denominationDiv.appendChild(countLabel); 
+                denominationDiv.appendChild(countLabel);
             }
         });
     });
@@ -104,4 +91,24 @@ function getImageSrc(key) {
         case '0.01': return 'assets/images/penny.jpg';
         default: return `assets/images/${key}-dollar.jpg`;
     }
+}
+
+document.getElementById('show-total-change').addEventListener('click', function() {
+    const amountDue = parseFloat(document.getElementById('amount-due').value);
+    const amountReceived = parseFloat(document.getElementById('amount-received').value);
+    if (isNaN(amountDue) || isNaN(amountReceived) || amountDue <= 0 || amountReceived <= 0) {
+        alert("Please enter valid positive numbers for both amounts.");
+        return;
+    }
+    if (amountReceived < amountDue) {
+        alert('Received amount is less than the due amount. No change can be calculated.');
+        return;
+    }
+    displayTotalChange(amountDue, amountReceived);
+});
+
+function displayTotalChange(due, received) {
+    const change = received - due;
+    const totalChangeOutput = document.getElementById('totalChangeOutput');
+    totalChangeOutput.textContent = `Total Change: $${change.toFixed(2)}`;
 }
