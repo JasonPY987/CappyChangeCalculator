@@ -37,6 +37,12 @@ function displayChange(denominations) {
     document.getElementById('nickels-output').textContent = denominations['0.05'];
     document.getElementById('pennies-output').textContent = denominations['0.01'];
 
+    document.getElementById('dollars-display').textContent = `Dollars: ${totalDollars}`;
+    document.getElementById('quarters-display').textContent = `Quarters: ${denominations['0.25']}`;
+    document.getElementById('dimes-display').textContent = `Dimes: ${denominations['0.10']}`;
+    document.getElementById('nickels-display').textContent = `Nickels: ${denominations['0.05']}`;
+    document.getElementById('pennies-display').textContent = `Pennies: ${denominations['0.01']}`;
+
     const container = document.getElementById('changeOutput');
     container.innerHTML = ''; // Clear previous results
 

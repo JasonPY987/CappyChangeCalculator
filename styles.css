@@ -151,6 +151,10 @@ button:hover {
     margin-top: 10px; /* Move the label up */
 }
 
+.hidden {
+    display: none;
+}
+
 /* Responsive adjustments */
 @media (max-width: 600px) {
     input[type="number"], button {
