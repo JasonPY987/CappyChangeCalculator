@@ -1,6 +1,6 @@
 /* General body styling */
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Lato'; 
     background-color: #1e1e2f;
     margin: 0;
     padding: 20px;
@@ -44,7 +44,7 @@ main {
     align-items: center;
     width: 45%;
     max-width: 400px;
-    background: #fff;
+    background: #d5d0d0;
     padding: 10px; /* Reduced padding */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -65,12 +65,21 @@ label {
 }
 
 input[type="number"] {
-    padding: 8px; /* Reduced padding */
+    -moz-appearance: textfield; /* Firefox */
+    appearance: textfield; /* Standard syntax */
+    padding: 10px;
     margin-top: 5px;
     border: 2px solid #ddd;
     border-radius: 5px;
     display: block;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none; /* Chrome, Safari, Edge, Opera */
+    margin: 0;
 }
 
 input[type="number"]:focus {
@@ -105,8 +114,8 @@ button:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #fff;
-    padding: 20px; /* Reduced padding */
+    background-color: #d5d0d0;
+    padding: 20px; 
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     color: #333;
@@ -146,11 +155,11 @@ button:hover {
 }
 
 .money-img {
-    width: 40px; /* Reduced size */
-    height: 40px; /* Reduced size */
+    width: 55px; 
+    height: 50px; 
     position: relative;
     transition: transform 0.3s ease;
-    margin-top: -10px; /* Slightly overlap images */
+    margin-top: -20px; 
     display: block;
 }
 
