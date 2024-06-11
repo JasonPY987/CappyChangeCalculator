@@ -1,6 +1,7 @@
 document.getElementById('calculate-change').addEventListener('click', function() {
     const amountDue = parseFloat(document.getElementById('amount-due').value);
     const amountReceived = parseFloat(document.getElementById('amount-received').value);
+
     if (isNaN(amountDue) || isNaN(amountReceived) || amountDue <= 0 || amountReceived <= 0) {
         alert("Please enter valid positive numbers for both amounts.");
         return;
@@ -9,9 +10,12 @@ document.getElementById('calculate-change').addEventListener('click', function()
         alert('Received amount is less than the due amount. No change can be calculated.');
         return;
     }
+
     const change = calculateChange(amountDue, amountReceived);
     displayChange(change);
+
     document.getElementById('totalChangeOutput').textContent = 'Total Change: $0.00';
+    document.getElementById('totalChangeOutput').dataset.total = (amountReceived - amountDue).toFixed(2);
 });
 
 function calculateChange(due, received) {
@@ -43,8 +47,8 @@ function displayChange(denominations) {
     document.getElementById('nickels-display').textContent = `Nickels: ${denominations['0.05']}`;
     document.getElementById('pennies-display').textContent = `Pennies: ${denominations['0.01']}`;
 
-    const container = document.getElementById('changeOutput');
-    container.innerHTML = ''; // Clear previous results
+    const imageGroup = document.getElementById('money-images');
+    imageGroup.innerHTML = ''; // Clear previous images
 
     const categories = {
         'Dollars': ['20', '10', '5', '2', '1'],
@@ -52,29 +56,14 @@ function displayChange(denominations) {
     };
 
     Object.keys(categories).forEach(category => {
-        const categoryDiv = document.createElement('div');
-        categoryDiv.className = 'category';
-        const categoryHeader = document.createElement('h3');
-        categoryHeader.textContent = category;
-        categoryDiv.appendChild(categoryHeader);
-        container.appendChild(categoryDiv);
-
         categories[category].forEach(key => {
             if (denominations[key] > 0) {
-                const denominationDiv = document.createElement('div');
-                denominationDiv.className = 'denomination';
-                categoryDiv.appendChild(denominationDiv);
-
-                const imagesContainer = document.createElement('div');
-                imagesContainer.className = 'images-container';
-                denominationDiv.appendChild(imagesContainer);
-
                 for (let i = 0; i < denominations[key]; i++) {
                     const img = document.createElement('img');
                     img.src = getImageSrc(key);
                     img.className = `money-img ${category.toLowerCase().slice(0, -1)}`;
                     img.style.animationDelay = `${i * 0.1}s`;
-                    imagesContainer.appendChild(img);
+                    imageGroup.appendChild(img);
                 }
             }
         });
@@ -92,18 +81,8 @@ function getImageSrc(key) {
 }
 
 document.getElementById('show-total-change').addEventListener('click', function() {
-    const amountDue = parseFloat(document.getElementById('amount-due').value);
-    const amountReceived = parseFloat(document.getElementById('amount-received').value);
-    if (isNaN(amountDue) || isNaN(amountReceived) || amountDue <= 0 || amountReceived <= 0) {
-        alert("Please enter valid positive numbers for both amounts.");
-        return;
-    }
-    if (amountReceived < amountDue) {
-        alert('Received amount is less than the due amount. No change can be calculated.');
-        return;
-    }
-    const change = (amountReceived - amountDue).toFixed(2);
-    animateTotalChange(0, change);
+    const totalChange = parseFloat(document.getElementById('totalChangeOutput').dataset.total);
+    animateTotalChange(0, totalChange);
 });
 
 function animateTotalChange(start, end) {
@@ -124,3 +103,8 @@ function animateTotalChange(start, end) {
         totalChangeOutput.textContent = `Total Change: $${currentValue.toFixed(2)}`;
     }, 1000 / frameRate);
 }
+
+document.getElementById('toggle-view').addEventListener('click', function() {
+    document.querySelector('.change-group').classList.toggle('hidden');
+    document.getElementById('money-images').classList.toggle('hidden');
+});

@@ -11,26 +11,35 @@
         <h1>Change Calculator</h1>
     </header>
     <main>
-        <div class="input-group">
-            <label for="amount-due">Amount Due:</label>
-            <input type="number" id="amount-due" placeholder="Enter amount due">
+        <div class="input-section">
+            <div class="input-group">
+                <label for="amount-due">Amount Due:</label>
+                <input type="number" id="amount-due" placeholder="Enter amount due">
+            </div>
+            <div class="input-group">
+                <label for="amount-received">Amount Received:</label>
+                <input type="number" id="amount-received" placeholder="Enter amount received">
+            </div>
+            <button id="calculate-change">Calculate Change</button>
         </div>
-        <div class="input-group">
-            <label for="amount-received">Amount Received:</label>
-            <input type="number" id="amount-received" placeholder="Enter amount received">
+        <div id="changeOutput" class="change-output">
+            <div id="change-cards" class="change-cards">
+                <div class="change-group">
+                    <p id="dollars-display">Dollars: 0</p>
+                    <p id="quarters-display">Quarters: 0</p>
+                    <p id="dimes-display">Dimes: 0</p>
+                    <p id="nickels-display">Nickels: 0</p>
+                    <p id="pennies-display">Pennies: 0</p>
+                </div>
+                <div id="money-images" class="hidden"></div>
+            </div>
+            <button id="toggle-view" class="toggle-view">⇄</button>
         </div>
-        <button id="calculate-change">Calculate Change</button>
-        <div id="changeOutput"></div>
         <p id="dollars-output" class="test-output hidden"></p>
         <p id="quarters-output" class="test-output hidden"></p>
         <p id="dimes-output" class="test-output hidden"></p>
         <p id="nickels-output" class="test-output hidden"></p>
         <p id="pennies-output" class="test-output hidden"></p>
-        <p id="dollars-display"></p>
-        <p id="quarters-display"></p>
-        <p id="dimes-display"></p>
-        <p id="nickels-display"></p>
-        <p id="pennies-display"></p>
     </main>
     <footer>
         <button id="show-total-change">Show Total Change</button>
