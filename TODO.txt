@@ -1,11 +1,10 @@
 TODO 
-have capybara as cashier (pirat?)
+20240611
 
-capybara asks how they will pay with dubloons or USD 
+in cappy Page
 
-have cash and coins animate up and stack on eachother (with correct change)
-
-sound effects for cash and coins? 
-
-
-have a sticky footer button thats displays how much change is there exactly
+image of cappy pirate
+[] have dubloons as currency
+[] display how much change is due and what was received (for the due change make it random numbers! and have it display like a manga chat bubble for cappy)
+[] have bubloons stack on counter
+[] 

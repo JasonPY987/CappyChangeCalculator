@@ -108,3 +108,9 @@ document.getElementById('toggle-view').addEventListener('click', function() {
     document.querySelector('.change-group').classList.toggle('hidden');
     document.getElementById('money-images').classList.toggle('hidden');
 });
+
+
+//redirect to cappy land! 
+document.getElementById('cappyButton').addEventListener('click', function() {
+    window.location.href = 'cappy.html';
+});
