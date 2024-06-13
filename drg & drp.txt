@@ -1,0 +1,72 @@
+this file is for CODE! 
+
+paste this into drag.js and you will be able to move all the containers around as needed 
+NOTE this is for development! its a cool function
+
+document.addEventListener('DOMContentLoaded', function () {
+    const draggableContainers = document.querySelectorAll('.container');
+
+    // Load positions from local storage
+    draggableContainers.forEach(container => {
+        const savedPosition = localStorage.getItem(container.id);
+        if (savedPosition) {
+            const { left, top } = JSON.parse(savedPosition);
+            container.style.left = left;
+            container.style.top = top;
+        }
+
+        container.addEventListener('mousedown', dragMouseDown);
+    });
+
+    function dragMouseDown(e) {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') {
+            return;
+        }
+
+        e.preventDefault();
+        const element = e.target.closest('.container');
+        const offsetX = e.clientX - element.getBoundingClientRect().left;
+        const offsetY = e.clientY - element.getBoundingClientRect().top;
+
+        document.onmousemove = function (e) {
+            element.style.left = `${e.clientX - offsetX}px`;
+            element.style.top = `${e.clientY - offsetY}px`;
+        };
+
+        document.onmouseup = function () {
+            document.onmousemove = null;
+            document.onmouseup = null;
+
+            const left = element.style.left;
+            const top = element.style.top;
+
+            localStorage.setItem(element.id, JSON.stringify({ left, top }));
+        };
+    }
+
+    document.addEventListener('dragover', (e) => {
+        e.preventDefault();
+    });
+});
+
+
+FOR DEPLOYEMENT!!!!
+this will 
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const draggableContainers = document.querySelectorAll('.container');
+
+    // Load positions from local storage
+    draggableContainers.forEach(container => {
+        const savedPosition = localStorage.getItem(container.id);
+        if (savedPosition) {
+            const { left, top } = JSON.parse(savedPosition);
+            container.style.left = left;
+            container.style.top = top;
+        }
+        
+        // Disable drag functionality
+        container.style.cursor = 'default';
+    });
+});

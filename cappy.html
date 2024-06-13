@@ -3,16 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cappy Page</title>
+    <title>Cappy's Doubloon Exchange</title>
     <link rel="stylesheet" href="cappy.css">
 </head>
 <body>
-    <header>
-        <h1>Meet Cappy</h1>
-    </header>
-    <main>
-        <img src="path/to/cappy_image.jpg" alt="Cappy" id="cappyImage">
-    </main>
+    <div class="image-container">
+        <div class="container" id="cappyTextContainer">
+            <div class="game-text" id="cappyText">Argh, pirate! You owe me <span id="amount-owed"></span> doubloons!</div>
+        </div>
+        <div class="container" id="inputSectionContainer">
+            <div class="input-section">
+                <label for="amount-given">Enter amount of doubloons to give:</label>
+                <input type="number" id="amount-given" placeholder="Enter amount">
+                <button id="give-doubloons">Give Doubloons</button>
+            </div>
+        </div>
+        <div class="container" id="changeOutputContainer">
+            <div id="changeOutput" class="change-output">
+                <p id="doubloons-display"></p>
+                <div id="doubloon-images" class="doubloon-images"></div>
+            </div>
+        </div>
+    </div>
+    <script src="drag.js"></script>
     <script src="cappy.js"></script>
 </body>
 </html>

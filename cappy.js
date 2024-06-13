@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         doubloonValues.forEach(value => {
             doubloons[value] = Math.floor(change / value);
-            change = (change % value).toFixed(2);
+            change %= value;
         });
 
         return doubloons;
@@ -66,9 +66,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 img.src = `assets/images/${value}doubloons.png`;
                 img.alt = `${value} doubloon`;
                 img.className = 'doubloon-img';
+                img.style.animation = `dropDown ${0.5 + i * 0.1}s ease-out`; // Adding delay to each coin
                 doubloonImages.appendChild(img);
             }
         });
-        doubloonsDisplay.textContent = `Doubloons Returned: ${Object.values(doubloons).reduce((a, b) => a + b, 0)}`;
+        //doubloonsDisplay.textContent = `Doubloons Returned: ${Object.values(doubloons).reduce((a, b) => a + b, 0)}`;
     }
 });

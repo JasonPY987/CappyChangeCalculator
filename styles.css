@@ -16,16 +16,44 @@ body {
 header {
     background: #007bff;
     color: #fff;
-    padding: 5px; /* Reduced padding */
-    text-align: center;
+    padding: 15px 20px;   
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 10px; /* Reduced margin */
+    margin-bottom: auto;
+    display: flex;            
+    align-items: center;      
+    justify-content: space-between; 
 }
 
+
 header h1 {
-    margin: 0;
-    font-size: 2em; /* Reduced font size */
+    margin: 0;          
+    font-size: 2em;
+    flex: 1;             
+    text-align: center; 
+}
+
+header .currency-choice {
+    gap: 10px;  
+    margin-left: auto;      
+    display: flex;
+    align-items: center;
+}
+
+
+header .currency-choice img {
+    width: 50px;
+    cursor: pointer;
+}
+
+header .currency-choice img#doubloonsButton {
+    animation: jump 1s infinite; 
+}
+
+@keyframes jump {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); } 
+    100% { transform: translateY(0); }
 }
 
 /* Main section styling */
@@ -35,7 +63,7 @@ main {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    padding: 10px; /* Reduced padding */
+    padding: 10px; 
 }
 
 .input-section {
