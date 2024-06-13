@@ -7,21 +7,26 @@
     <link rel="stylesheet" href="cappy.css">
 </head>
 <body>
-    <div class="image-container">
-        <div class="container" id="cappyTextContainer">
-            <div class="game-text" id="cappyText">Argh, pirate! You owe me <span id="amount-owed"></span> doubloons!</div>
-        </div>
-        <div class="container" id="inputSectionContainer">
-            <div class="input-section">
-                <label for="amount-given">Enter amount of doubloons to give:</label>
-                <input type="number" id="amount-given" placeholder="Enter amount">
-                <button id="give-doubloons">Give Doubloons</button>
-            </div>
-        </div>
-        <div class="container" id="changeOutputContainer">
-            <div id="changeOutput" class="change-output">
-                <p id="doubloons-display"></p>
-                <div id="doubloon-images" class="doubloon-images"></div>
+    <div class="background-blur">
+        <div class="main-container">
+            <div class="image-container">
+                <img src="assets/images/pirateCappy.png" alt="Pirate Cappy" class="main-image">
+                <div class="container" id="cappyTextContainer">
+                    <div class="game-text" id="cappyText">Argh, pirate! You owe me <span id="amount-owed"></span> doubloons!</div>
+                </div>
+                <div class="container" id="inputSectionContainer">
+                    <div class="input-section">
+                        <label for="amount-given">Enter amount of doubloons to give:</label>
+                        <input type="number" id="amount-given" placeholder="Enter amount">
+                        <button id="give-doubloons">Give Doubloons</button>
+                    </div>
+                </div>
+                <div class="container" id="changeOutputContainer">
+                    <div id="changeOutput" class="change-output">
+                        <p id="doubloons-display"></p>
+                        <div id="doubloon-images" class="doubloon-images"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

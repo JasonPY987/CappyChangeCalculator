@@ -1,24 +1,46 @@
 /* General body styling */
 body {
     font-family: 'Lato', 'Roboto', sans-serif;
-    background-color: black; /* Surrounding area is black */
+    background: url('assets/images/cappybackgroundimage.jpg') no-repeat center center fixed;
+    background-size: cover;
     margin: 0;
     padding: 0;
     color: #fff;
+    height: 100vh;
+    overflow: hidden; /* Prevents scrolling */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    overflow: hidden; /* Prevents scrolling */
-    position: relative; /* Necessary for absolute positioning */
 }
 
-.image-container {
-    background: url('assets/images/PirateCapy.png') no-repeat center center;
-    background-size: contain; /* Ensure the background image scales down to fit smaller screens */
+/* Background blur container */
+.background-blur {
+    backdrop-filter: blur(10px); /* Blurs the background image */
     width: 100%;
     height: 100%;
-    position: relative; /* Necessary for positioning the containers */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Main container holding the image and draggable containers */
+.main-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Image container */
+.image-container {
+    position: relative;
+}
+
+/* Main image styling */
+.main-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
 }
 
 /* Container styling */
@@ -27,7 +49,6 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.0);
-    max-width: 600px;
     color: black;
     text-align: center;
     position: absolute; /* Enable absolute positioning */
