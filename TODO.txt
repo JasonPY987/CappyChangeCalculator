@@ -7,8 +7,8 @@ image of cappy pirate
 [X] have dubloons as currency 
 [X] display how much change is due and what was received (for the due change make it random numbers! and have it display like a manga chat bubble for cappy)
 [X] have bubloons stack on counter
-[] place currency on the header asking user "currency" - american flag - capybara?
-[] when clicking on give doubloons too many times the text can get scrambled haha
+[X] place currency on the header asking user "currency" - american flag - capybara?
+[X] when clicking on give doubloons too many times the text can get scrambled haha
 
 
 

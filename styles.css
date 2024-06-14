@@ -73,7 +73,7 @@ main {
     width: 45%;
     max-width: 400px;
     background: #d5d0d0;
-    padding: 10px; /* Reduced padding */
+    padding: 10px; 
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     color: #333;
@@ -93,8 +93,8 @@ label {
 }
 
 input[type="number"] {
-    -moz-appearance: textfield; /* Firefox */
-    appearance: textfield; /* Standard syntax */
+    -moz-appearance: textfield; 
+    appearance: textfield; 
     padding: 10px;
     margin-top: 5px;
     border: 2px solid #ddd;
@@ -106,7 +106,7 @@ input[type="number"] {
 
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none; /* Chrome, Safari, Edge, Opera */
+    -webkit-appearance: none; 
     margin: 0;
 }
 
@@ -119,7 +119,7 @@ button {
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 8px 16px; /* Reduced padding */
+    padding: 8px 16px; 
     text-transform: uppercase;
     border-radius: 5px;
     cursor: pointer;
@@ -158,7 +158,7 @@ button:hover {
 }
 
 .change-group p {
-    margin: 5px 0; /* Reduced margin */
+    margin: 5px 0; 
     font-size: 1.1em;
 }
 
@@ -166,7 +166,7 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0 10px; /* Reduced margin */
+    margin: 0 10px; 
 }
 
 .category h3 {
@@ -219,10 +219,10 @@ button:hover {
 
 .images-container {
     display: flex;
-    flex-direction: column; /* Change to column to stack images */
+    flex-direction: column; 
     align-items: center;
     margin-bottom: 0;
-    width: 100%; /* Ensure the container takes full width */
+    width: 100%; 
 }
 
 .count-label {
@@ -248,12 +248,12 @@ button:hover {
     background: #007bff;
     color: white;
     border: none;
-    padding: 5px 10px; /* Adjusted padding to shrink the button */
+    padding: 5px 10px; 
     text-transform: uppercase;
     border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    min-width: auto; /* Set a minimum width to prevent the button from becoming too small */
+    min-width: auto;
 }
 
 .toggle-view:hover {
@@ -280,10 +280,10 @@ footer {
     background: #007bff;
     color: white;
     text-align: center;
-    padding: 10px; /* Reduced padding */
+    padding: 10px; 
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 10px; /* Reduced margin */
+    margin-top: 10px; 
     width: 100%;
     max-width: 400px;
     margin: 35px auto;
