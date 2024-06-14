@@ -20,7 +20,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const change = amountGiven - amountOwed;
 
         if (change < 0) {
-            typeText('Argh, ye owe me more doubloons!', cappyText);
+            const amountStillOwed = Math.abs(change);
+            const doubloonWord = amountStillOwed === 1 ? 'doubloon' : 'doubloons';
+            typeText(`Argh, ye owe me ${amountStillOwed} more ${doubloonWord}!`, cappyText);
             return;
         }
 

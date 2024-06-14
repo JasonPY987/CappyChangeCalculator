@@ -7,6 +7,25 @@
     <link rel="stylesheet" href="cappy.css">
 </head>
 <body>
+    <header class="small-header">
+        <a href="index.html">
+            <img src="assets/images/dollarIMGIcon.png" alt="Dollar Icon" class="header-icon">
+        </a>
+        <div class="key">
+            <div class="key-item">
+                <img src="assets/images/1doubloons.png" alt="1 Doubloon" class="key-icon">
+                <span>= 1 Doubloon</span>
+            </div>
+            <div class="key-item">
+                <img src="assets/images/5doubloons.png" alt="5 Doubloons" class="key-icon">
+                <span>= 5 Doubloons</span>
+            </div>
+            <div class="key-item">
+                <img src="assets/images/10doubloons.png" alt="10 Doubloons" class="key-icon">
+                <span>= 10 Doubloons</span>
+            </div>
+        </div>
+    </header>
     <div class="background-blur">
         <div class="main-container">
             <div class="image-container">
@@ -16,9 +35,8 @@
                 </div>
                 <div class="container" id="inputSectionContainer">
                     <div class="input-section">
-                        <label for="amount-given">Enter amount of doubloons to give:</label>
-                        <input type="number" id="amount-given" placeholder="Enter amount">
-                        <button id="give-doubloons">Give Doubloons</button>
+                        <input type="number" id="amount-given">
+                        <button id="give-doubloons">Give Doubloons!</button>
                     </div>
                 </div>
                 <div class="container" id="changeOutputContainer">
